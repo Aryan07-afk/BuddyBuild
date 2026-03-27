@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuddyBuild — Ratings</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/ratings.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg><span class="logo-text">BuddyBuild</span></div>
+    <div class="sidebar-user">
+      <div class="user-avatar">AD</div>
+      <div class="user-info"><span class="user-name">Aryan Dhoundiyal</span><span class="user-role">Team Lead</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a href="discovery.html" class="nav-item"><span class="nav-icon">◎</span> Discover</a>
+      <a href="requests.html" class="nav-item"><span class="nav-icon">⇄</span> Requests <span class="nav-badge">3</span></a>
+      <a href="profile.html" class="nav-item"><span class="nav-icon">◉</span> My Profile</a>
+      <a href="my-team.html" class="nav-item"><span class="nav-icon">◈</span> My Team</a>
+      <a href="ratings.html" class="nav-item active"><span class="nav-icon">★</span> Ratings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" class="nav-item logout"><span class="nav-icon">⇦</span> Logout</a>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-left">
+        <h1 class="page-title">Ratings</h1>
+        <span class="page-sub">Rate teammates & view your scores</span>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- MY RATING OVERVIEW -->
+      <div class="rating-overview">
+        <div class="ro-score-big">
+          <div class="rob-num">4.2</div>
+          <div class="rob-stars">★★★★☆</div>
+          <div class="rob-label">Overall Rating</div>
+          <div class="rob-sub">Based on 5 reviews</div>
+        </div>
+        <div class="ro-breakdown">
+          <div class="rob-item">
+            <span class="rob-cat">Teamwork</span>
+            <div class="rob-bar-wrap">
+              <div class="rob-bar"><div class="rob-fill" style="width:82%"></div></div>
+              <span class="rob-val">4.1</span>
+            </div>
+          </div>
+          <div class="rob-item">
+            <span class="rob-cat">Punctuality</span>
+            <div class="rob-bar-wrap">
+              <div class="rob-bar"><div class="rob-fill" style="width:90%"></div></div>
+              <span class="rob-val">4.5</span>
+            </div>
+          </div>
+          <div class="rob-item">
+            <span class="rob-cat">Technicality</span>
+            <div class="rob-bar-wrap">
+              <div class="rob-bar"><div class="rob-fill" style="width:78%"></div></div>
+              <span class="rob-val">3.9</span>
+            </div>
+          </div>
+          <div class="rob-item">
+            <span class="rob-cat">Communication</span>
+            <div class="rob-bar-wrap">
+              <div class="rob-bar"><div class="rob-fill" style="width:84%"></div></div>
+              <span class="rob-val">4.2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RATE TEAMMATES -->
+      <div class="section-card">
+        <div class="sc-head">
+          <h3>Rate Your Teammates</h3>
+          <span class="sc-sub">Project: Campus Navigator · Sem 5</span>
+        </div>
+
+        <div class="rate-teammates-list">
+
+          <!-- Jay Kumar -->
+          <div class="rate-teammate-card" id="rate-jk">
+            <div class="rtc-header">
+              <div class="rtc-avatar" style="background:#f59e0b">JK</div>
+              <div class="rtc-info">
+                <div class="rtc-name">Jay Kumar</div>
+                <div class="rtc-meta">Sem 5 · Python, ML</div>
+              </div>
+              <div class="rtc-status" id="rtc-status-jk">
+                <span class="not-rated">Not Rated Yet</span>
+              </div>
+            </div>
+
+            <div class="rtc-body">
+              <div class="rating-criteria">
+                <div class="rc-row">
+                  <span class="rc-label">Teamwork</span>
+                  <div class="star-rating" data-field="teamwork" data-target="jk">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="2" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="3" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="4" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-label">Punctuality</span>
+                  <div class="star-rating" data-field="punctuality" data-target="jk">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="2" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="3" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="4" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-label">Technicality</span>
+                  <div class="star-rating" data-field="technicality" data-target="jk">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="2" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="3" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="4" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-label">Communication</span>
+                  <div class="star-rating" data-field="communication" data-target="jk">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="2" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="3" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="4" onclick="setRating(this)">★</span>
+                    <span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="rtc-comment">
+                <textarea placeholder="Add a comment (optional)..." rows="2" id="comment-jk"></textarea>
+              </div>
+              <button class="btn-submit-rating" onclick="submitRating('jk', 'Jay Kumar')">Submit Rating</button>
+            </div>
+          </div>
+
+          <!-- Maya Raj -->
+          <div class="rate-teammate-card" id="rate-mr">
+            <div class="rtc-header">
+              <div class="rtc-avatar" style="background:#10b981">MR</div>
+              <div class="rtc-info">
+                <div class="rtc-name">Maya Raj</div>
+                <div class="rtc-meta">Sem 4 · UI/UX, Figma</div>
+              </div>
+              <div class="rtc-status" id="rtc-status-mr">
+                <span class="not-rated">Not Rated Yet</span>
+              </div>
+            </div>
+            <div class="rtc-body">
+              <div class="rating-criteria">
+                <div class="rc-row">
+                  <span class="rc-label">Teamwork</span>
+                  <div class="star-rating" data-field="teamwork" data-target="mr">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span><span class="star" data-val="2" onclick="setRating(this)">★</span><span class="star" data-val="3" onclick="setRating(this)">★</span><span class="star" data-val="4" onclick="setRating(this)">★</span><span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-label">Punctuality</span>
+                  <div class="star-rating" data-field="punctuality" data-target="mr">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span><span class="star" data-val="2" onclick="setRating(this)">★</span><span class="star" data-val="3" onclick="setRating(this)">★</span><span class="star" data-val="4" onclick="setRating(this)">★</span><span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-label">Technicality</span>
+                  <div class="star-rating" data-field="technicality" data-target="mr">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span><span class="star" data-val="2" onclick="setRating(this)">★</span><span class="star" data-val="3" onclick="setRating(this)">★</span><span class="star" data-val="4" onclick="setRating(this)">★</span><span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+                <div class="rc-row">
+                  <span class="rc-label">Communication</span>
+                  <div class="star-rating" data-field="communication" data-target="mr">
+                    <span class="star" data-val="1" onclick="setRating(this)">★</span><span class="star" data-val="2" onclick="setRating(this)">★</span><span class="star" data-val="3" onclick="setRating(this)">★</span><span class="star" data-val="4" onclick="setRating(this)">★</span><span class="star" data-val="5" onclick="setRating(this)">★</span>
+                  </div>
+                </div>
+              </div>
+              <div class="rtc-comment">
+                <textarea placeholder="Add a comment (optional)..." rows="2" id="comment-mr"></textarea>
+              </div>
+              <button class="btn-submit-rating" onclick="submitRating('mr','Maya Raj')">Submit Rating</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RECEIVED RATINGS -->
+      <div class="section-card">
+        <div class="sc-head"><h3>Ratings You Received</h3></div>
+        <div class="received-ratings">
+          <div class="rr-item">
+            <div class="rr-avatar" style="background:#f59e0b">RM</div>
+            <div class="rr-body">
+              <div class="rr-name">Raghav Mittal <span class="rr-meta">· Sem 4 project</span></div>
+              <div class="rr-stars">★★★★★</div>
+              <div class="rr-comment">"Alex was an excellent lead — always responsive and technically strong."</div>
+            </div>
+            <div class="rr-score">5.0</div>
+          </div>
+          <div class="rr-item">
+            <div class="rr-avatar" style="background:#ec4899">KL</div>
+            <div class="rr-body">
+              <div class="rr-name">Kai Lim <span class="rr-meta">· Sem 4 project</span></div>
+              <div class="rr-stars">★★★★☆</div>
+              <div class="rr-comment">"Great work ethic but sometimes communication could be quicker."</div>
+            </div>
+            <div class="rr-score">4.0</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/ratings.js"></script>
+</body>
+</html>

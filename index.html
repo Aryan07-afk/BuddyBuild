@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuddyBuild — Find Your Team</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+
+  <div class="auth-bg">
+    <div class="bg-blob b1"></div>
+    <div class="bg-blob b2"></div>
+    <div class="bg-blob b3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <header class="auth-header">
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+      <span class="logo-text">BuddyBuild</span>
+    </div>
+    <nav class="auth-nav">
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="register.html" class="nav-link">Register</a>
+    </nav>
+  </header>
+
+  <main class="auth-main">
+    <!-- Hero Left -->
+    <div class="hero-section">
+      <div class="hero-badge">🎓 Built for Students</div>
+      <h1 class="hero-title">
+        Build<br/>
+        <em>Together.</em><br/>
+        <span class="hero-accent">Grow Together.</span>
+      </h1>
+      <p class="hero-sub">Find teammates who complement your skills. Form the perfect project team for every semester.</p>
+
+
+
+      <div style="margin-top: 2.5rem;">
+        <a href="register.html" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.2rem; margin-right: 1rem;">Get Started <span class="btn-arrow">→</span></a>
+        <a href="login.html" class="btn-outline" style="font-size: 1.1rem; padding: 1rem 2.2rem;">Log In</a>
+      </div>
+    </div>
+
+    <!-- Hero Right Illustration -->
+    <div class="hero-illustration" style="position: relative; animation: float 6s ease-in-out infinite; justify-self: center;">
+      <img src="hero.png" alt="Students building together" style="width: 100%; max-width: 520px; border-radius: var(--radius-lg); box-shadow: 0 24px 60px rgba(0,0,0,0.06); object-fit: cover; border: 1px solid var(--border);" />
+    </div>
+
+    <!-- Full Width Feature Cards -->
+    <div class="hero-features" style="grid-column: 1 / -1; margin-top: 4rem;">
+      <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 2rem; color: var(--text); text-align: center;">Why use BuddyBuild?</h3>
+      <div class="features-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+        <div class="feat-card">
+          <div class="feat-icon accent">🎭</div>
+          <div class="feat-title">Role-based Matching</div>
+          <div class="feat-desc">Choose your role as Solo, Team Lead, or Member to find the right fit.</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon green">🎯</div>
+          <div class="feat-title">Skill-driven Discovery</div>
+          <div class="feat-desc">Filter peers by your missing tech stack and specific skills perfectly.</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon blue">📊</div>
+          <div class="feat-title">Dedicated Dashboard</div>
+          <div class="feat-desc">Create and manage your team requests in one unified place.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section class="landing-section" id="how-it-works">
+    <div class="section-container">
+      <h2 class="section-title">How BuddyBuild Works</h2>
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <div class="timeline-step">1</div>
+          <h4>Create Your Profile</h4>
+          <p>Sign up, list your technical skills, and outline your semester project goals to get started.</p>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-step">2</div>
+          <h4>Find Your Match</h4>
+          <p>Use our advanced discovery tools to find classmates checking exactly the skill boxes you lack.</p>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-step">3</div>
+          <h4>Build & Succeed</h4>
+          <p>Connect, utilize the dedicated project dashboards, and build your perfect semester project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="landing-section alt-bg" id="testimonials">
+    <div class="section-container">
+      <h2 class="section-title">What Students Say</h2>
+      <div class="testimonials-grid">
+        <div class="testim-card">
+          <p>"I couldn't find a frontend dev for my capstone. BuddyBuild connected me with the perfect match in hours!"</p>
+          <div class="testim-author">
+            <div class="testim-avatar">AB</div>
+            <div class="testim-author-info">
+              <strong>Ashmit Bisht</strong>
+              <span>Comp Sci, Sem 6</span>
+            </div>
+          </div>
+        </div>
+        <div class="testim-card">
+          <p>"The dashboard makes managing team tasks incredibly easy. I use it for literally every single group assignment."</p>
+          <div class="testim-author">
+            <div class="testim-avatar">RM</div>
+            <div class="testim-author-info">
+              <strong>Raghav Mittal</strong>
+              <span>Software Engineering, Sem 6</span>
+            </div>
+          </div>
+        </div>
+        <div class="testim-card">
+          <p>"No more awkward classroom group forming. Filtering by technical stacks completely saved our ML project."</p>
+          <div class="testim-author">
+            <div class="testim-avatar">AD</div>
+            <div class="testim-author-info">
+              <strong>Aryan Dhoundiyal</strong>
+              <span>Software Engineering, Sem 6</span>
+            </div>
+          </div>
+        </div>
+        <div class="testim-card">
+          <p>"Finding a team used to be pure stress. Thanks to BuddyBuild, our project team hit the ground running."</p>
+          <div class="testim-author">
+            <div class="testim-avatar">AV</div>
+            <div class="testim-author-info">
+              <strong>Aditya Verma</strong>
+              <span>Comp Sci, Sem 6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom: 1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span class="logo-text">BuddyBuild</span>
+          </div>
+          <p class="footer-desc">Find your perfect project teammates. Build amazing things together, every semester.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <a href="login.html">Sign In</a>
+            <a href="register.html">Register</a>
+            <a href="#how-it-works">How it Works</a>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Contact Us</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 BuddyBuild. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

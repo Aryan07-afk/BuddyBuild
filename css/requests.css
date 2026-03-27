@@ -1,0 +1,167 @@
+/* ============================================================
+   BUDDYBUILD — Requests Page Styles
+   ============================================================ */
+
+.req-tabs {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.35rem;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.req-tab {
+  background: none;
+  border: none;
+  color: var(--text-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex; align-items:center; gap:0.5rem;
+}
+.req-tab:hover { color: var(--text); background: var(--surface-2); }
+.req-tab.active { background: var(--accent); color: #0d0f14; }
+
+.tab-count {
+  background: rgba(0,0,0,0.2);
+  padding: 0.1rem 0.45rem;
+  border-radius: 100px;
+  font-size: 0.7rem;
+}
+.req-tab.active .tab-count { background: rgba(0,0,0,0.25); }
+
+.req-panel { display: none; }
+.req-panel.active { display: block; }
+
+.req-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.req-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: all 0.2s;
+}
+.req-card:hover { border-color: rgba(245,166,35,0.25); }
+
+.req-avatar {
+  width: 48px; height: 48px;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 13px;
+  display: flex; align-items:center; justify-content:center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.req-info { flex: 1; }
+.req-name {
+  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.req-type {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+.req-type.join    { background: var(--blue-dim);   color: var(--blue);   border:1px solid rgba(59,130,246,0.25); }
+.req-type.invite  { background: var(--purple-dim); color: var(--purple); border:1px solid rgba(139,92,246,0.25); }
+.req-type.pending { background: var(--accent-dim); color: var(--accent); border:1px solid rgba(245,166,35,0.25); }
+.req-type.accepted-badge { background: var(--green-dim); color: var(--green); border:1px solid rgba(16,185,129,0.25); }
+
+.req-meta { font-size: 0.82rem; color: var(--text-2); margin-bottom: 0.6rem; }
+.req-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
+.req-time { font-size: 0.75rem; color: var(--text-3); }
+
+.req-actions { display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end; flex-shrink: 0; }
+
+.btn-accept-full {
+  background: var(--green-dim);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn-accept-full:hover { background: var(--green); color: #fff; }
+
+.btn-reject-full {
+  background: var(--red-dim);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--red);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn-reject-full:hover { background: var(--red); color: #fff; }
+
+.btn-cancel-full {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-cancel-full:hover { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+
+.btn-view-profile {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.38rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn-view-profile:hover { border-color: var(--accent); color: var(--accent); }
+
+.accepted-card { border-color: rgba(16,185,129,0.2); background: rgba(16,185,129,0.04); }
+.outgoing-card { opacity: 0.85; }
+
+/* Fade out animation */
+.req-card.removing {
+  transform: translateX(40px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .req-card { flex-direction: column; }
+  .req-actions { flex-direction: row; align-items: flex-start; }
+}

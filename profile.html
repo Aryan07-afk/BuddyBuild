@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuddyBuild — My Profile</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg><span class="logo-text">BuddyBuild</span></div>
+    <div class="sidebar-user">
+      <div class="user-avatar">AD</div>
+      <div class="user-info"><span class="user-name">Aryan Dhoundiyal</span><span class="user-role">Solo Student</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item"><span class="nav-icon">⊞</span> Dashboard</a>
+      <a href="discovery.html" class="nav-item"><span class="nav-icon">◎</span> Discover</a>
+      <a href="requests.html" class="nav-item"><span class="nav-icon">⇄</span> Requests <span class="nav-badge">3</span></a>
+      <a href="profile.html" class="nav-item active"><span class="nav-icon">◉</span> My Profile</a>
+      <a href="my-team.html" class="nav-item"><span class="nav-icon">◈</span> My Team</a>
+      <a href="ratings.html" class="nav-item"><span class="nav-icon">★</span> Ratings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" class="nav-item logout"><span class="nav-icon">⇦</span> Logout</a>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-left">
+        <h1 class="page-title">My Profile</h1>
+        <span class="page-sub">Manage your public profile</span>
+      </div>
+      <div class="topbar-right">
+        <button class="btn-primary sm" onclick="saveProfile()">Save Changes</button>
+      </div>
+    </header>
+
+    <main class="page-content profile-main">
+
+      <!-- PROFILE HERO CARD -->
+      <div class="profile-hero">
+        <div class="ph-cover"></div>
+        <div class="ph-body">
+          <div class="ph-avatar-wrap">
+            <div class="ph-avatar" id="ph-avatar">AR</div>
+            <button class="ph-avatar-edit" onclick="document.getElementById('avatar-input').click()">✎</button>
+            <input type="file" id="avatar-input" accept="image/*" style="display:none" onchange="updateAvatar(this)"/>
+          </div>
+          <div class="ph-info">
+            <h2 id="ph-name">Aryan Dhoundiyal</h2>
+            <div class="ph-meta">
+              <span class="ph-badge role-solo">Solo Student</span>
+              <span class="ph-sep">·</span>
+              <span>Sem 5</span>
+              <span class="ph-sep">·</span>
+              <span>Section A</span>
+            </div>
+            <div class="ph-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-val">4.2 avg rating</span>
+            </div>
+          </div>
+          <div class="ph-actions">
+            <button class="btn-outline" onclick="previewProfile()">Preview Public Profile</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+
+        <!-- BASIC INFO -->
+        <div class="profile-section">
+          <div class="ps-header">
+            <h3>Basic Information</h3>
+            <button class="edit-toggle" onclick="toggleEdit('basic-fields', this)">✎ Edit</button>
+          </div>
+          <div class="ps-body" id="basic-fields">
+            <div class="field-row">
+              <div class="field-group">
+                <label>Full Name</label>
+                <input type="text" value="Aryan Dhoundiyal" disabled class="profile-input" />
+              </div>
+              <div class="field-group">
+                <label>Email</label>
+                <input type="email" value="alex.ramos@university.edu" disabled class="profile-input" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label>Phone Number</label>
+                <input type="tel" value="+91 98765 43210" disabled class="profile-input" />
+              </div>
+              <div class="field-group">
+                <label>WhatsApp Number</label>
+                <input type="tel" value="+91 98765 43210" disabled class="profile-input" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label>Semester</label>
+                <select disabled class="profile-input">
+                  <option selected>Sem 5</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Section</label>
+                <input type="text" value="A" disabled class="profile-input" />
+              </div>
+            </div>
+            <div class="field-group full">
+              <label>Bio</label>
+              <textarea disabled class="profile-input" rows="3" placeholder="Tell people about yourself...">Full-stack developer passionate about building scalable web apps. Looking for a team with strong design sensibility.</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXTERNAL LINKS -->
+        <div class="profile-section">
+          <div class="ps-header">
+            <h3>External Links</h3>
+            <button class="edit-toggle" onclick="toggleEdit('external-fields', this)">✎ Edit</button>
+          </div>
+          <div class="ps-body" id="external-fields">
+            <div class="field-group">
+              <label>GitHub Profile</label>
+              <div class="input-wrap">
+                <span class="input-icon">🐙</span>
+                <input type="url" value="https://github.com/aryandh" disabled class="profile-input" style="padding-left: 2.5rem;" />
+              </div>
+            </div>
+            <div class="field-group" style="margin-top: 1rem;">
+              <label>LinkedIn Profile</label>
+              <div class="input-wrap">
+                <span class="input-icon">💼</span>
+                <input type="url" value="https://linkedin.com/in/aryandh" disabled class="profile-input" style="padding-left: 2.5rem;" />
+              </div>
+            </div>
+            <div class="field-group" style="margin-top: 1rem;">
+              <label>Personal Portfolio</label>
+              <div class="input-wrap">
+                <span class="input-icon">🌐</span>
+                <input type="url" value="https://aryan.dev" disabled class="profile-input" style="padding-left: 2.5rem;" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <div class="profile-section">
+          <div class="ps-header">
+            <h3>Skills</h3>
+            <button class="edit-toggle" onclick="toggleSkillEdit()">✎ Edit Skills</button>
+          </div>
+          <div class="ps-body">
+            <div class="skills-edit-grid" id="skills-edit-grid">
+              <div class="skill-chip-edit">React <button class="chip-remove" onclick="removeSkill(this)">×</button></div>
+              <div class="skill-chip-edit">Node.js <button class="chip-remove" onclick="removeSkill(this)">×</button></div>
+              <div class="skill-chip-edit">Python <button class="chip-remove" onclick="removeSkill(this)">×</button></div>
+              <div class="skill-chip-edit">UI/UX <button class="chip-remove" onclick="removeSkill(this)">×</button></div>
+              <div class="skill-chip-edit">MongoDB <button class="chip-remove" onclick="removeSkill(this)">×</button></div>
+              <div class="skill-chip-edit">Git <button class="chip-remove" onclick="removeSkill(this)">×</button></div>
+            </div>
+
+            <div class="skill-add-section" id="skill-add-section">
+              <div class="skill-add-bar">
+                <input type="text" id="skill-add-input" placeholder="Type a skill to add..." />
+                <button onclick="addProfileSkill()">+ Add</button>
+              </div>
+              <div class="skill-suggestions">
+                <span onclick="quickAddSkill('Java')">Java</span>
+                <span onclick="quickAddSkill('Flutter')">Flutter</span>
+                <span onclick="quickAddSkill('DevOps')">DevOps</span>
+                <span onclick="quickAddSkill('AWS')">AWS</span>
+                <span onclick="quickAddSkill('Docker')">Docker</span>
+                <span onclick="quickAddSkill('ML')">ML</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT HISTORY -->
+        <div class="profile-section full-width">
+          <div class="ps-header">
+            <h3>Project History</h3>
+            <button class="edit-toggle" onclick="openAddProject()">+ Add Project</button>
+          </div>
+          <div class="ps-body">
+            <div class="project-list" id="project-list">
+              <div class="project-item">
+                <div class="proj-icon">📦</div>
+                <div class="proj-body">
+                  <div class="proj-title">E-commerce Web App</div>
+                  <div class="proj-meta">Role: Full-stack Developer · Teammates: 3 · Sem 4</div>
+                </div>
+                <button class="btn-del-proj" onclick="deleteProject(this)">✕</button>
+              </div>
+              <div class="project-item">
+                <div class="proj-icon">🤖</div>
+                <div class="proj-body">
+                  <div class="proj-title">ML Sentiment Analyzer</div>
+                  <div class="proj-meta">Role: ML Engineer · Teammates: 2 · Sem 3</div>
+                </div>
+                <button class="btn-del-proj" onclick="deleteProject(this)">✕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Project Modal -->
+  <div class="modal-overlay" id="add-proj-modal" onclick="closeAddProject(event)">
+    <div class="modal-box sm-modal">
+      <button class="modal-close" onclick="document.getElementById('add-proj-modal').classList.remove('open')">✕</button>
+      <h3>Add Project</h3>
+      <div class="field-group">
+        <label>Project Title</label>
+        <input type="text" id="proj-title-input" placeholder="e.g., Mobile App for Campus" class="profile-input" style="background:var(--surface-2)" />
+      </div>
+      <div class="field-group">
+        <label>Your Role</label>
+        <input type="text" id="proj-role-input" placeholder="e.g., Frontend Developer" class="profile-input" style="background:var(--surface-2)" />
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>Semester</label>
+          <select id="proj-sem-input" class="profile-input" style="background:var(--surface-2)">
+            <option>Sem 1</option><option>Sem 2</option><option>Sem 3</option>
+            <option>Sem 4</option><option>Sem 5</option><option selected>Sem 6</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Team Size</label>
+          <input type="number" id="proj-team-input" placeholder="e.g., 4" min="1" max="10" class="profile-input" style="background:var(--surface-2)" />
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:1rem" onclick="addProject()">Add Project</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

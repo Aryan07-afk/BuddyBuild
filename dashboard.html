@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuddyBuild — Dashboard</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      <span class="logo-text">BuddyBuild</span>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="user-avatar">AD</div>
+      <div class="user-info">
+        <span class="user-name">Aryan Dhoundiyal</span>
+        <span class="user-role">Solo Student</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">
+        <span class="nav-icon">⊞</span> Dashboard
+      </a>
+      <a href="discovery.html" class="nav-item">
+        <span class="nav-icon">◎</span> Discover
+      </a>
+      <a href="requests.html" class="nav-item">
+        <span class="nav-icon">⇄</span> Requests
+        <span class="nav-badge" id="req-badge">3</span>
+      </a>
+      <a href="profile.html" class="nav-item">
+        <span class="nav-icon">◉</span> My Profile
+      </a>
+      <a href="my-team.html" class="nav-item">
+        <span class="nav-icon">◈</span> My Team
+      </a>
+      <a href="ratings.html" class="nav-item">
+        <span class="nav-icon">★</span> Ratings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="nav-item logout">
+        <span class="nav-icon">⇦</span> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-wrap">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <button class="hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-left">
+        <h1 class="page-title">Dashboard</h1>
+        <span class="page-sub" id="dynamic-greeting">Good morning, Aryan 👋</span>
+      </div>
+      <div class="topbar-right">
+        <div class="search-bar">
+          <span>🔍</span>
+          <input type="text" placeholder="Search students, skills..." onkeydown="if(event.key==='Enter') window.location='discovery.html'"/>
+        </div>
+        <div class="notif-btn" onclick="window.location='requests.html'">
+          🔔 <span class="notif-dot"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="page-content">
+
+      <!-- STATUS BANNER -->
+      <div id="dynamic-status-banner"></div>
+
+      <!-- STATS GRID -->
+      <div class="stats-grid">
+        <div class="stat-card" style="--accent:#6c63ff">
+          <div class="stat-icon">👥</div>
+          <div class="stat-body">
+            <span class="stat-value">0</span>
+            <span class="stat-label">Team Members</span>
+          </div>
+          <div class="stat-bg-icon">◈</div>
+        </div>
+        <div class="stat-card" style="--accent:#f59e0b">
+          <div class="stat-icon">⇄</div>
+          <div class="stat-body">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Pending Requests</span>
+          </div>
+          <div class="stat-bg-icon">⇄</div>
+        </div>
+        <div class="stat-card" style="--accent:#10b981">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-body">
+            <span class="stat-value">6</span>
+            <span class="stat-label">Skills Listed</span>
+          </div>
+          <div class="stat-bg-icon">⚡</div>
+        </div>
+        <div class="stat-card" style="--accent:#ec4899">
+          <div class="stat-icon">★</div>
+          <div class="stat-body">
+            <span class="stat-value">4.2</span>
+            <span class="stat-label">Avg Rating</span>
+          </div>
+          <div class="stat-bg-icon">★</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <!-- DYNAMIC INSIGHTS PANEL -->
+        <div id="dynamic-insights-panel" class="dash-card"></div>
+
+        <!-- MY SKILLS -->
+        <div class="dash-card">
+          <div class="card-head">
+            <h3>My Skills</h3>
+            <a href="profile.html" class="see-all">Edit →</a>
+          </div>
+          <div class="skills-cloud">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">UI/UX</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Git</span>
+          </div>
+          <div class="add-skill-row">
+            <input type="text" placeholder="Add a new skill..." id="new-skill-input" />
+            <button onclick="addSkill()">+ Add</button>
+          </div>
+
+          <!-- RATING SNAPSHOT -->
+          <div class="rating-snapshot">
+            <div class="rs-title">Peer Rating Snapshot</div>
+            <div class="rs-bars">
+              <div class="rs-bar-row">
+                <span>Teamwork</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:82%"></div></div>
+                <span>4.1</span>
+              </div>
+              <div class="rs-bar-row">
+                <span>Punctuality</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:90%"></div></div>
+                <span>4.5</span>
+              </div>
+              <div class="rs-bar-row">
+                <span>Technical</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:78%"></div></div>
+                <span>3.9</span>
+              </div>
+              <div class="rs-bar-row">
+                <span>Communication</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:85%"></div></div>
+                <span>4.2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="dash-card quick-actions-card">
+          <div class="card-head">
+            <h3>Quick Actions</h3>
+          </div>
+          <div class="qa-grid">
+            <a href="discovery.html" class="qa-btn">
+              <span class="qa-icon">◎</span>
+              <span>Discover<br/>Teammates</span>
+            </a>
+            <a href="my-team.html#create" class="qa-btn">
+              <span class="qa-icon">+</span>
+              <span>Create<br/>a Team</span>
+            </a>
+            <a href="requests.html" class="qa-btn">
+              <span class="qa-icon">⇄</span>
+              <span>View<br/>Requests</span>
+            </a>
+            <a href="ratings.html" class="qa-btn">
+              <span class="qa-icon">★</span>
+              <span>Rate<br/>Teammates</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

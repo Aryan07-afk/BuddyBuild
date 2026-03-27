@@ -1,0 +1,188 @@
+/* ============================================================
+   BUDDYBUILD — Ratings Page Styles
+   ============================================================ */
+
+/* ── Rating Overview ── */
+.rating-overview {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.ro-score-big { text-align: center; }
+.rob-num {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.rob-stars { color: var(--accent); font-size: 1.25rem; margin-bottom: 0.4rem; }
+.rob-label { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+.rob-sub { font-size: 0.75rem; color: var(--text-3); margin-top: 0.2rem; }
+
+.ro-breakdown { display: flex; flex-direction: column; gap: 0.85rem; }
+.rob-item { display: flex; align-items: center; gap: 1rem; }
+.rob-cat { font-size: 0.82rem; color: var(--text-2); width: 120px; flex-shrink: 0; }
+.rob-bar-wrap { flex: 1; display: flex; align-items: center; gap: 0.75rem; }
+.rob-bar { flex: 1; height: 8px; background: var(--surface-3); border-radius: 4px; overflow: hidden; }
+.rob-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #fbb748); border-radius: 4px; transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.rob-val { font-size: 0.82rem; font-weight: 700; color: var(--text); width: 28px; text-align: right; }
+
+/* ── Rate Teammate Cards ── */
+.rate-teammates-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.rate-teammate-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.rate-teammate-card:hover { border-color: rgba(245,166,35,0.2); }
+.rate-teammate-card.rated { border-color: rgba(16,185,129,0.25); background: rgba(16,185,129,0.04); }
+
+.rtc-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.rtc-avatar {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  color: #fff;
+  display: flex; align-items:center; justify-content:center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.rtc-info { flex: 1; }
+.rtc-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.15rem; }
+.rtc-meta { font-size: 0.78rem; color: var(--text-3); }
+.rtc-status { }
+.not-rated {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+}
+.rated-badge {
+  font-size: 0.75rem;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid rgba(16,185,129,0.25);
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+}
+
+.rtc-body { padding: 1.25rem; }
+
+/* ── Star Rating ── */
+.rating-criteria { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.rc-row { display: flex; align-items: center; gap: 1rem; }
+.rc-label { font-size: 0.82rem; color: var(--text-2); width: 110px; flex-shrink: 0; }
+
+.star-rating { display: flex; gap: 0.2rem; }
+.star {
+  font-size: 1.25rem;
+  color: var(--surface-3);
+  cursor: pointer;
+  transition: all 0.1s;
+  line-height: 1;
+  filter: drop-shadow(0 0 0 transparent);
+}
+.star:hover, .star.active {
+  color: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent-glow));
+}
+.star-rating:hover .star { color: var(--accent); opacity: 0.4; }
+.star-rating .star:hover ~ .star { color: var(--surface-3); opacity: 1; }
+.star-rating:hover .star:hover { opacity: 1; }
+
+/* ── Comment ── */
+.rtc-comment { margin-bottom: 1rem; }
+.rtc-comment textarea {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  outline: none;
+  resize: vertical;
+  min-height: 60px;
+  transition: border-color 0.2s;
+}
+.rtc-comment textarea:focus { border-color: var(--accent); }
+.rtc-comment textarea::placeholder { color: var(--text-3); }
+
+.btn-submit-rating {
+  background: var(--accent);
+  color: #0d0f14;
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-submit-rating:hover { background: #fbb748; box-shadow: 0 4px 16px var(--accent-glow); transform: translateY(-1px); }
+.btn-submit-rating:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── Received Ratings ── */
+.received-ratings { display: flex; flex-direction: column; gap: 0.9rem; }
+.rr-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s;
+}
+.rr-item:hover { border-color: rgba(245,166,35,0.2); }
+.rr-avatar {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  color: #fff;
+  display: flex; align-items:center; justify-content:center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+.rr-body { flex: 1; }
+.rr-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.25rem; }
+.rr-meta { color: var(--text-3); font-size: 0.8rem; font-weight: 400; }
+.rr-stars { color: var(--accent); font-size: 0.88rem; margin-bottom: 0.3rem; }
+.rr-comment { font-size: 0.82rem; color: var(--text-2); font-style: italic; }
+.rr-score {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .rating-overview { grid-template-columns: 1fr; text-align: center; }
+  .rob-cat { width: 90px; }
+  .rc-label { width: 90px; }
+}
