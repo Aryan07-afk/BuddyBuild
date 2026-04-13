@@ -19,16 +19,16 @@
       <span class="logo-text">BuddyBuild</span>
     </div>
     <div class="sidebar-user">
-      <div class="user-avatar">AD</div>
+      <div class="user-avatar" id="global-avatar-sidebar"></div>
       <div class="user-info">
-        <span class="user-name">Aryan Dhoundiyal</span>
-        <span class="user-role">Solo Student</span>
+        <span class="user-name"></span>
+        <span class="user-role"></span>
       </div>
     </div>
     <nav class="sidebar-nav">
       <a href="dashboard.html" class="nav-item"><span class="nav-icon">⊞</span> Dashboard</a>
       <a href="discovery.html" class="nav-item active"><span class="nav-icon">◎</span> Discover</a>
-      <a href="requests.html" class="nav-item"><span class="nav-icon">⇄</span> Requests <span class="nav-badge">3</span></a>
+      <a href="requests.html" class="nav-item"><span class="nav-icon">⇄</span> Requests <span class="nav-badge" style="display:none;">0</span></a>
       <a href="profile.html" class="nav-item"><span class="nav-icon">◉</span> My Profile</a>
       <a href="my-team.html" class="nav-item"><span class="nav-icon">◈</span> My Team</a>
       <a href="ratings.html" class="nav-item"><span class="nav-icon">★</span> Ratings</a>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="results-info">
-          <span id="results-count">Showing 8 students</span>
+          <span id="results-count">Showing 0 students</span>
           <div class="view-toggle">
             <button class="vt active" id="grid-view" onclick="setView('grid', this)">⊞</button>
             <button class="vt" id="list-view" onclick="setView('list', this)">≡</button>

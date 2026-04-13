@@ -20,10 +20,10 @@
     </div>
 
     <div class="sidebar-user">
-      <div class="user-avatar">AD</div>
+      <div class="user-avatar" id="global-avatar"></div>
       <div class="user-info">
-        <span class="user-name">Aryan Dhoundiyal</span>
-        <span class="user-role">Solo Student</span>
+        <span class="user-name"></span>
+        <span class="user-role"></span>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
       </a>
       <a href="requests.html" class="nav-item">
         <span class="nav-icon">⇄</span> Requests
-        <span class="nav-badge" id="req-badge">3</span>
+        <span class="nav-badge" id="req-badge" style="display:none;">0</span>
       </a>
       <a href="profile.html" class="nav-item">
         <span class="nav-icon">◉</span> My Profile
@@ -64,7 +64,7 @@
       <button class="hamburger" onclick="toggleSidebar()">☰</button>
       <div class="topbar-left">
         <h1 class="page-title">Dashboard</h1>
-        <span class="page-sub" id="dynamic-greeting">Good morning, Aryan 👋</span>
+        <span class="page-sub" id="dynamic-greeting">Welcome back! 👋</span>
       </div>
       <div class="topbar-right">
         <div class="search-bar">
@@ -130,12 +130,6 @@
             <a href="profile.html" class="see-all">Edit →</a>
           </div>
           <div class="skills-cloud">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">UI/UX</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Git</span>
           </div>
           <div class="add-skill-row">
             <input type="text" placeholder="Add a new skill..." id="new-skill-input" />
@@ -148,23 +142,23 @@
             <div class="rs-bars">
               <div class="rs-bar-row">
                 <span>Teamwork</span>
-                <div class="rs-bar"><div class="rs-fill" style="width:82%"></div></div>
-                <span>4.1</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:0%"></div></div>
+                <span class="rating-score">0.0</span>
               </div>
               <div class="rs-bar-row">
                 <span>Punctuality</span>
-                <div class="rs-bar"><div class="rs-fill" style="width:90%"></div></div>
-                <span>4.5</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:0%"></div></div>
+                <span class="rating-score">0.0</span>
               </div>
               <div class="rs-bar-row">
                 <span>Technical</span>
-                <div class="rs-bar"><div class="rs-fill" style="width:78%"></div></div>
-                <span>3.9</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:0%"></div></div>
+                <span class="rating-score">0.0</span>
               </div>
               <div class="rs-bar-row">
                 <span>Communication</span>
-                <div class="rs-bar"><div class="rs-fill" style="width:85%"></div></div>
-                <span>4.2</span>
+                <div class="rs-bar"><div class="rs-fill" style="width:0%"></div></div>
+                <span class="rating-score">0.0</span>
               </div>
             </div>
           </div>

@@ -89,6 +89,21 @@
 }
 
 .rtc-body { padding: 1.25rem; }
+.rtc-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.rtc-label { font-size: 0.82rem; color: var(--text-2); width: 110px; flex-shrink: 0; }
+.rtc-comment-wrap textarea {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  outline: none;
+  resize: vertical;
+  min-height: 60px;
+}
 
 /* ── Star Rating ── */
 .rating-criteria { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
@@ -148,6 +163,17 @@
 
 /* ── Received Ratings ── */
 .received-ratings { display: flex; flex-direction: column; gap: 0.9rem; }
+.received-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+.rc-header { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
+.rc-stars { color: var(--accent); }
+.rc-date { color: var(--text-3); font-size: 0.78rem; }
+.rc-comment { color: var(--text-2); margin-bottom: 0.45rem; }
+.rc-meta { color: var(--text-3); font-size: 0.78rem; }
 .rr-item {
   display: flex;
   gap: 1rem;

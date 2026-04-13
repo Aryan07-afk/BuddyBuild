@@ -2,6 +2,61 @@
    BUDDYBUILD — Shared App Utilities
    ============================================================ */
 
+const API_BASE = 'http://localhost:8080/api';
+const PUBLIC_PATHS = ['login.html', 'register.html', 'index.html', 'forgot-password.html', 'reset-password.html'];
+const ROLE_LABELS = {
+  student: 'Student',
+  leader: 'Team Lead',
+  admin: 'Admin'
+};
+
+function normalizeRole(role) {
+  return (role || 'student').toString().toLowerCase();
+}
+
+/**
+ * Shared API Fetch wrapper with Auth headers
+ */
+async function apiFetch(endpoint, options = {}) {
+  const token = localStorage.getItem('bb_token');
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers
+  };
+  
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const response = await fetch(`${API_BASE}${endpoint}`, { ...options, headers });
+  
+  if (response.status === 401) {
+    localStorage.clear();
+    window.location.href = 'login.html';
+    return;
+  }
+  
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.message || 'API request failed');
+  }
+  return data;
+}
+
+function logout() {
+  localStorage.clear();
+  window.location.href = 'index.html';
+}
+
+function bindLogoutLinks() {
+  document.querySelectorAll('a.logout').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      logout();
+    });
+  });
+}
+
 /* ── Toast Notification ── */
 function showToast(message, type = 'info', duration = 3000) {
   let toast = document.getElementById('bb-toast');
@@ -65,35 +120,76 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-/* ── Role Management (Mock) ── */
+/* ── Shared session bootstrap ── */
 document.addEventListener('DOMContentLoaded', () => {
-  const role = localStorage.getItem('bb_user_role') || 'solo';
-  const roleDisplay = {
-    'solo': 'Solo Student',
-    'lead': 'Team Lead',
-    'member': 'Team Member'
-  };
+  bindLogoutLinks();
 
-  // 1. Update text that displays the role globally
-  document.querySelectorAll('.user-role').forEach(el => {
-    el.textContent = roleDisplay[role];
-  });
-  
-  const phBadge = document.querySelector('.ph-badge');
-  if (phBadge) {
-    phBadge.className = `ph-badge role-${role}`;
-    phBadge.textContent = roleDisplay[role];
+  // 1. Fetch current user data and update sidebar globally
+  const token = localStorage.getItem('bb_token');
+  if (token && !PUBLIC_PATHS.some(p => window.location.pathname.endsWith(p))) {
+    apiFetch('/users/me').then(res => {
+      const user = res.data;
+      const rKey = normalizeRole(user.role);
+      
+      // Store essential info for other JS files
+      localStorage.setItem('bb_user_id', user.id);
+      localStorage.setItem('bb_user_role', rKey);
+      if (user.teamId) {
+        localStorage.setItem('bb_team_id', user.teamId);
+      } else {
+        localStorage.removeItem('bb_team_id');
+      }
+
+      document.querySelectorAll('.user-name').forEach(el => {
+        el.textContent = user.fullName;
+      });
+      document.querySelectorAll('.user-role').forEach(el => {
+        el.textContent = ROLE_LABELS[rKey] || rKey;
+      });
+
+      // Populate avatars with initials or saved profile picture
+      const initials = user.fullName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+      document.querySelectorAll('.user-avatar, #global-avatar-sidebar, #global-avatar-header, #global-avatar').forEach(el => {
+        if (user.profilePicture) {
+          el.style.background = `url(${user.profilePicture}) center/cover`;
+          el.textContent = '';
+        } else {
+          el.style.background = '';
+          el.textContent = initials;
+        }
+      });
+      
+      const phBadge = document.querySelector('.ph-badge');
+      if (phBadge) {
+        phBadge.className = `ph-badge role-${rKey}`;
+        phBadge.textContent = ROLE_LABELS[rKey] || rKey;
+      }
+
+      // Populate request badge if exists
+      const sidebarBadge = document.querySelector('.nav-badge');
+      if (sidebarBadge && window.location.pathname.includes('requests')) {
+        // This will be handled in requests.js, but let's hide it if not on requests page
+      }
+    }).catch(err => {
+      console.error("Global auth fetch failed:", err);
+      // If we are on an auth-required page, redirect to login
+      if (!PUBLIC_PATHS.some(p => window.location.pathname.endsWith(p))) {
+        localStorage.clear();
+        window.location.href = 'login.html';
+      }
+    });
   }
 
   // 2. Adjust visibility of links/buttons based on user role
+  const role = normalizeRole(localStorage.getItem('bb_user_role'));
   const createTeamLink = document.querySelector('a[href="my-team.html#create"]');
-  if (createTeamLink && role === 'member') {
+  if (createTeamLink && role === 'leader') {
     createTeamLink.style.display = 'none';
   }
 
   // --- MY TEAM SPECIFIC LOGIC ---
   if (window.location.pathname.includes('my-team.html')) {
-    if (role === 'member') {
+    if (role !== 'leader') {
       // Hide administrative buttons
       const editTeamBtn = document.getElementById('btn-edit-team');
       const markCompleteBtn = document.getElementById('btn-mark-complete');
@@ -104,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (editTeamBtn) editTeamBtn.style.display = 'none';
       if (markCompleteBtn) markCompleteBtn.style.display = 'none';
-      if (pendingReqCard) pendingReqCard.style.display = 'none';
       if (editLinksBtn) editLinksBtn.style.display = 'none';
       if (addLinkBtn) addLinkBtn.style.display = 'none';
       if (addTaskBtn) addTaskBtn.style.display = 'none';
@@ -116,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Hide the '+ Invite Member' button
       const inviteBtn = document.querySelector('.section-card .btn-outline[onclick="window.location=\'discovery.html\'"]');
       if (inviteBtn) inviteBtn.style.display = 'none';
+      if (pendingReqCard) pendingReqCard.style.display = 'none';
     }
   }
 });

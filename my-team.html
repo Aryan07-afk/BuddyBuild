@@ -16,13 +16,13 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg><span class="logo-text">BuddyBuild</span></div>
     <div class="sidebar-user">
-      <div class="user-avatar">AD</div>
-      <div class="user-info"><span class="user-name">Aryan Dhoundiyal</span><span class="user-role">Team Lead</span></div>
+      <div class="user-avatar" id="global-avatar-sidebar"></div>
+      <div class="user-info"><span class="user-name"></span><span class="user-role"></span></div>
     </div>
     <nav class="sidebar-nav">
       <a href="dashboard.html" class="nav-item"><span class="nav-icon">⊞</span> Dashboard</a>
       <a href="discovery.html" class="nav-item"><span class="nav-icon">◎</span> Discover</a>
-      <a href="requests.html" class="nav-item"><span class="nav-icon">⇄</span> Requests <span class="nav-badge">3</span></a>
+      <a href="requests.html" class="nav-item"><span class="nav-icon">⇄</span> Requests <span class="nav-badge" style="display:none;">0</span></a>
       <a href="profile.html" class="nav-item"><span class="nav-icon">◉</span> My Profile</a>
       <a href="my-team.html" class="nav-item active"><span class="nav-icon">◈</span> My Team</a>
       <a href="ratings.html" class="nav-item"><span class="nav-icon">★</span> Ratings</a>
@@ -40,7 +40,7 @@
         <span class="page-sub">Manage your project team</span>
       </div>
       <div class="topbar-right">
-        <button class="btn-primary sm" onclick="openCreateTeam()">+ Create Team</button>
+        <button class="btn-primary sm" id="top-create-team-btn" onclick="openCreateTeam()">+ Create Team</button>
       </div>
     </header>
 
@@ -65,15 +65,15 @@
           <div class="th-left">
             <div class="th-icon">◈</div>
             <div class="th-info">
-              <h2 class="th-name" id="team-name">Team Nova</h2>
+              <h2 class="th-name" id="team-name">Team Name</h2>
               <div class="th-meta">
-                <span class="th-badge lead">You are Lead</span>
+                <span class="th-badge lead">Role</span>
                 <span class="th-sep">·</span>
-                <span id="team-status-badge" class="th-badge open">Open</span>
+                <span id="team-status-badge" class="th-badge">Status</span>
                 <span class="th-sep">·</span>
-                <span id="member-count">3 Members</span>
+                <span id="member-count">0 Members</span>
               </div>
-              <p class="th-desc" id="team-desc">Building a smart campus navigation app using React Native and ML for indoor positioning.</p>
+              <p class="th-desc" id="team-desc">No description available.</p>
             </div>
           </div>
           <div class="th-right">
@@ -89,70 +89,6 @@
             <button class="btn-outline sm" onclick="window.location='discovery.html'">+ Invite Member</button>
           </div>
           <div class="members-grid" id="members-grid">
-
-            <div class="member-card lead-card">
-              <div class="mc-avatar">AD</div>
-              <div class="mc-body">
-                <div class="mc-name">Aryan Dhoundiyal <span class="mc-badge lead">Lead</span></div>
-                <div class="mc-meta">Sem 5 · Section A</div>
-                <div class="mc-skills">
-                  <span class="skill-tag sm">React</span>
-                  <span class="skill-tag sm">Node.js</span>
-                </div>
-              </div>
-              <div class="mc-actions">
-                <span class="mc-you">You</span>
-              </div>
-            </div>
-
-            <div class="member-card" id="member-aditya">
-              <div class="mc-avatar" style="background:#10b981">AV</div>
-              <div class="mc-body">
-                <div class="mc-name">Aditya Verma</div>
-                <div class="mc-meta">Sem 6 · Comp Sci</div>
-                <div class="mc-skills">
-                  <span class="skill-tag sm">Python</span>
-                  <span class="skill-tag sm">Machine Learning</span>
-                </div>
-              </div>
-              <div class="mc-actions">
-                <button class="btn-rate" onclick="window.location='ratings.html'">Rate</button>
-                <button class="btn-kick" onclick="removeMember('member-aditya', 'Aditya Verma')">✕</button>
-              </div>
-            </div>
-
-            <div class="member-card" id="member-ashmit">
-              <div class="mc-avatar" style="background:#f59e0b">AB</div>
-              <div class="mc-body">
-                <div class="mc-name">Ashmit Bisht</div>
-                <div class="mc-meta">Sem 6 · Software Eng</div>
-                <div class="mc-skills">
-                  <span class="skill-tag sm">React</span>
-                  <span class="skill-tag sm">UI/UX</span>
-                </div>
-              </div>
-              <div class="mc-actions">
-                <button class="btn-rate" onclick="window.location='ratings.html'">Rate</button>
-                <button class="btn-kick" onclick="removeMember('member-ashmit', 'Ashmit Bisht')">✕</button>
-              </div>
-            </div>
-
-            <div class="member-card" id="member-raghav">
-              <div class="mc-avatar" style="background:#8b5cf6">RM</div>
-              <div class="mc-body">
-                <div class="mc-name">Raghav Mittal</div>
-                <div class="mc-meta">Sem 6 · Comp Sci</div>
-                <div class="mc-skills">
-                  <span class="skill-tag sm">Node.js</span>
-                  <span class="skill-tag sm">MongoDB</span>
-                </div>
-              </div>
-              <div class="mc-actions">
-                <button class="btn-rate" onclick="window.location='ratings.html'">Rate</button>
-                <button class="btn-kick" onclick="removeMember('member-raghav', 'Raghav Mittal')">✕</button>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -162,53 +98,7 @@
             <h3>Project Tasks</h3>
             <button class="btn-primary sm" id="btn-add-task">+ Add Task</button>
           </div>
-          <div class="kanban-board" style="display:flex; gap:1rem; overflow-x:auto; padding-bottom:1rem;">
-            <!-- TO DO -->
-            <div class="kb-column" style="flex:1; min-width:280px; background:var(--surface-2); border-radius:12px; padding:1rem;">
-              <h4 style="margin-bottom:1rem; font-size:0.95rem; color:var(--text-muted); display:flex; justify-content:space-between;">To Do <span style="background:var(--border); padding:2px 8px; border-radius:12px; font-size:0.8rem; color:var(--text)">2</span></h4>
-              
-              <div class="kb-card" style="background:var(--surface); padding:1rem; border-radius:8px; border:1px solid var(--border); margin-bottom:0.75rem;">
-                <div style="font-size:0.9rem; font-weight:500; margin-bottom:0.5rem;">Design Database Schema</div>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span style="font-size:0.75rem; background:#fee2e2; color:#ef4444; padding:2px 6px; border-radius:4px;">High</span>
-                  <div class="mc-avatar" style="width:24px; height:24px; font-size:0.7rem; background:#8b5cf6">RM</div>
-                </div>
-              </div>
-
-              <div class="kb-card" style="background:var(--surface); padding:1rem; border-radius:8px; border:1px solid var(--border);">
-                <div style="font-size:0.9rem; font-weight:500; margin-bottom:0.5rem;">Create Figma Mockups</div>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span style="font-size:0.75rem; background:#f3f4f6; color:#6b7280; padding:2px 6px; border-radius:4px;">Low</span>
-                  <div class="mc-avatar" style="width:24px; height:24px; font-size:0.7rem; background:#f59e0b">AB</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- IN PROGRESS -->
-            <div class="kb-column" style="flex:1; min-width:280px; background:var(--surface-2); border-radius:12px; padding:1rem;">
-              <h4 style="margin-bottom:1rem; font-size:0.95rem; color:var(--text-muted); display:flex; justify-content:space-between;">In Progress <span style="background:var(--accent-light); color:var(--accent); padding:2px 8px; border-radius:12px; font-size:0.8rem;">1</span></h4>
-              
-              <div class="kb-card" style="background:var(--surface); padding:1rem; border-radius:8px; border:1px solid var(--accent); box-shadow:0 0 0 1px var(--accent);">
-                <div style="font-size:0.9rem; font-weight:500; margin-bottom:0.5rem;">Develop Login API</div>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span style="font-size:0.75rem; background:#fef3c7; color:#f59e0b; padding:2px 6px; border-radius:4px;">Medium</span>
-                  <div class="mc-avatar" style="width:24px; height:24px; font-size:0.7rem; background:#10b981">AV</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- DONE -->
-            <div class="kb-column" style="flex:1; min-width:280px; background:var(--surface-2); border-radius:12px; padding:1rem;">
-              <h4 style="margin-bottom:1rem; font-size:0.95rem; color:var(--text-muted); display:flex; justify-content:space-between;">Done <span style="background:#d1fae5; color:#10b981; padding:2px 8px; border-radius:12px; font-size:0.8rem;">1</span></h4>
-              
-              <div class="kb-card" style="background:var(--surface); padding:1rem; border-radius:8px; border:1px solid var(--border); opacity:0.7;">
-                <div style="font-size:0.9rem; font-weight:500; margin-bottom:0.5rem; text-decoration:line-through; color:var(--text-muted);">Repository Setup</div>
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span style="font-size:0.75rem; background:#f3f4f6; color:#6b7280; padding:2px 6px; border-radius:4px;">Low</span>
-                  <div class="mc-avatar" style="width:24px; height:24px; font-size:0.7rem; background:var(--accent)">AD</div>
-                </div>
-              </div>
-            </div>
+          <div class="kanban-board" id="kanban-board" style="display:flex; gap:1rem; overflow-x:auto; padding-bottom:1rem;">
           </div>
         </div>
 
@@ -218,18 +108,7 @@
             <h3>Pending Requests to this Team</h3>
             <a href="requests.html" class="see-all">See all →</a>
           </div>
-          <div class="pending-list">
-            <div class="pending-item" id="pend-sa">
-              <div class="pi-avatar" style="background:#8b5cf6">SA</div>
-              <div class="pi-info">
-                <span class="pi-name">Sam Ali</span>
-                <span class="pi-meta">wants to join · Sem 6 · Flutter, Firebase</span>
-              </div>
-              <div class="pi-actions">
-                <button class="btn-accept-full" onclick="acceptPending('pend-sa','Sam Ali')">✓ Accept</button>
-                <button class="btn-reject-full" onclick="rejectPending('pend-sa')">✕</button>
-              </div>
-            </div>
+          <div class="pending-list" id="pending-requests-list">
           </div>
         </div>
 
@@ -239,19 +118,19 @@
           <div class="proj-details-grid">
             <div class="pd-item">
               <span class="pd-label">Project Title</span>
-              <span class="pd-value" id="pd-title">Campus Navigator</span>
+              <span class="pd-value" id="pd-title">Untitled</span>
             </div>
             <div class="pd-item">
               <span class="pd-label">Status</span>
-              <span class="pd-value status-open">Active</span>
+              <span class="pd-value" id="pd-status">--</span>
             </div>
             <div class="pd-item">
               <span class="pd-label">Semester</span>
-              <span class="pd-value">Sem 5</span>
+              <span class="pd-value" id="pd-sem">--</span>
             </div>
             <div class="pd-item">
               <span class="pd-label">Team Size</span>
-              <span class="pd-value">4 / 5</span>
+              <span class="pd-value" id="pd-team-size">0 / 0</span>
             </div>
           </div>
         </div>
@@ -262,21 +141,7 @@
             <h3>Workspace Links</h3>
             <button class="btn-outline sm" id="btn-edit-links">✎ Edit Links</button>
           </div>
-          <div class="links-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; padding: 0.5rem 0;">
-            <a href="#" style="display:flex; align-items:center; gap:0.5rem; padding:1rem; background:var(--surface-2); border-radius:12px; text-decoration:none; color:var(--text); border:1px solid var(--border);">
-              <span style="font-size:1.5rem;">🐙</span>
-              <div>
-                <div style="font-weight:600; font-size:0.95rem;">GitHub Repo</div>
-                <div style="font-size:0.8rem; color:var(--text-muted);">main-branch</div>
-              </div>
-            </a>
-            <a href="#" style="display:flex; align-items:center; gap:0.5rem; padding:1rem; background:var(--surface-2); border-radius:12px; text-decoration:none; color:var(--text); border:1px solid var(--border);">
-              <span style="font-size:1.5rem;">🎨</span>
-              <div>
-                <div style="font-weight:600; font-size:0.95rem;">Figma Design</div>
-                <div style="font-size:0.8rem; color:var(--text-muted);">ui-mockups_v2</div>
-              </div>
-            </a>
+          <div class="links-grid" id="workspace-links" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; padding: 0.5rem 0;">
             <button id="btn-add-link" style="display:flex; align-items:center; gap:0.5rem; padding:1rem; border:1px dashed var(--border); border-radius:12px; background:transparent; cursor:pointer; color:var(--text-muted); justify-content:center; transition:0.2s; min-height:70px;">
               <span style="font-size:1rem;">+ Add Link</span>
             </button>
